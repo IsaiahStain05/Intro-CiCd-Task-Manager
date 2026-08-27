@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Learn Docker",
+    "description": "Containerize this app",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "title": "Learn pytest",
+    "description": "Write automated tests",
+    "completed": false
+  },
+  {
+    "id": 3,
+    "title": "Learn CI/CD",
+    "description": "Build a pipeline",
+    "completed": false
+  },
+  {
+    "id": 4,
+    "title": "New title",
+    "description": "New description",
+    "completed": true
+  }
+]
