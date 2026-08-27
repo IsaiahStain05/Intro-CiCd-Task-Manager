@@ -7,7 +7,7 @@ app = FastAPI(title="Task API")
 
 @app.get("/health")
 def health_check():
-    return {"status": "healthy"}
+    return {"status": "ok"}
 
 @app.get("/tasks")
 def view_all_tasks():
