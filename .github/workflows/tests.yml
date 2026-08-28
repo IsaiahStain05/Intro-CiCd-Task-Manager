@@ -51,10 +51,10 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          docker tag task-api ghcr.io/${{github.repository_owner}}/task-api:${{github.sha}}
-          docker tag task-api ghcr.io/${{github.repository_owner}}/task-api:latest
+          docker tag task-api ghcr.io/${{github.repository_owner,,}}/task-api:${{github.sha}}
+          docker tag task-api ghcr.io/${{github.repository_owner,,}}/task-api:latest
 
       - name: Push Docker Image
         run: |
-          docker push ghcr.io/${{github.repository_owner}}/task-api:${{github.sha}}
-          docker push ghcr.io/${{github.repository_owner}}/task-api:latest
+          docker push ghcr.io/${{github.repository_owner,,}}/task-api:${{github.sha}}
+          docker push ghcr.io/${{github.repository_owner,,}}/task-api:latest
