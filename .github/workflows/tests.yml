@@ -28,3 +28,12 @@ jobs:
 
       - name: Build Docker Image
         run: docker build -t task-api .
+
+      - name: Run Docker Container
+        run: |
+          docker run -d --name task-api -p 8000:8000 task-api
+      
+      - name: Check Application
+        run: |
+          sleep 3
+          curl --fail http://localhost:8000/health
