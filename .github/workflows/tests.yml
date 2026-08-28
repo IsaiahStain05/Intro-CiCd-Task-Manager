@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -37,3 +41,20 @@ jobs:
         run: |
           sleep 3
           curl --fail http://localhost:8000/health
+
+      - name: Log into GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Tag Docker Image
+        run: |
+          docker tag task-api ghcr.io/${{github.repository_owner}}/task-api:${{github.sha}}
+          docker tag task-api ghcr.io/${{github.repository_owner}}/task-api:latest
+
+      - name: Push Docker Image
+        run: |
+          docker push ghcr.io/${{github.repository_owner}}/task-api:${{github.sha}}
+          docker push ghcr.io/${{github.repository_owner}}/task-api:latest
